@@ -22,7 +22,7 @@ class MainTabViewState extends State<MainTabView> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        body: _pages.elementAt(_selectedIndex),
+        body: SafeArea(child: _pages.elementAt(_selectedIndex)),
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),

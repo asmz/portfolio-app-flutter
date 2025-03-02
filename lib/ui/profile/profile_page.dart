@@ -1,12 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app_flutter/ui/profile/widgets/nameplate.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('This is ProfilePage', style: TextStyle(fontSize: 32.0)),
+    return Container(
+      height: double.infinity,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/beer.jpg"),
+          fit: BoxFit.cover,
+        ),
+      ),
+      child: SingleChildScrollView(child: Column(children: [Nameplate()])),
     );
   }
 }
