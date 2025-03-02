@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_app_flutter/ui/profile/widgets/account_list.dart';
 import 'package:portfolio_app_flutter/ui/profile/widgets/nameplate.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -14,7 +15,9 @@ class ProfilePage extends StatelessWidget {
           fit: BoxFit.cover,
         ),
       ),
-      child: SingleChildScrollView(child: Column(children: [Nameplate()])),
+      child: SingleChildScrollView(
+        child: Column(spacing: 32, children: [Nameplate(), AccountList()]),
+      ),
     );
   }
 }
