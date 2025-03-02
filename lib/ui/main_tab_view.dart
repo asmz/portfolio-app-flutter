@@ -22,7 +22,8 @@ class MainTabViewState extends State<MainTabView> {
     return DefaultTabController(
       length: 3,
       child: Scaffold(
-        body: _pages.elementAt(_selectedIndex),
+        backgroundColor: Colors.white,
+        body: SafeArea(child: _pages.elementAt(_selectedIndex)),
         bottomNavigationBar: BottomNavigationBar(
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.person), label: 'Profile'),
@@ -35,6 +36,7 @@ class MainTabViewState extends State<MainTabView> {
           type: BottomNavigationBarType.fixed,
           currentIndex: _selectedIndex,
           selectedItemColor: AppColor.accent,
+          backgroundColor: Colors.white,
           onTap: _onItemTapped,
         ),
       ),
