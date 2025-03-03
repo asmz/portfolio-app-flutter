@@ -1,12 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:portfolio_app_flutter/models/post/post_request.dart';
+import 'package:portfolio_app_flutter/provider/tumblr_api_provider.dart';
 
-class BlogPage extends StatelessWidget {
+class BlogPage extends ConsumerWidget {
   const BlogPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Center(
-      child: Text('This is BlogPage', style: TextStyle(fontSize: 32.0)),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final response = ref.watch(
+      tumblrApiProvider(PostRequest(offset: 0, limit: 10, tag: 'blog')),
+    );
+
+    return Container(
+      child: response.when(
+        data: (data) {
+          return Column(
+            children: [
+              for (var post in data.posts)
+                Text(post.content[0].title ?? "empty"),
+            ],
+          );
+        },
+        loading: () => Center(child: CircularProgressIndicator()),
+        error: (error, stackTrace) => Center(child: Text('Error: $error')),
+      ),
     );
   }
 }

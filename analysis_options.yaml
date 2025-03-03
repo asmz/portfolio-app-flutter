@@ -1,1 +1,10 @@
 include: package:flutter_lints/flutter.yaml
+analyzer:
+  errors:
+    invalid_annotation_target: ignore
+  plugins:
+    - custom_lint
+
+custom_lint:
+  rules:
+    - provider_parameters
