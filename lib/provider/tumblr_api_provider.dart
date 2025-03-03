@@ -3,13 +3,14 @@ import 'package:portfolio_app_flutter/api/api_client.dart';
 import 'package:portfolio_app_flutter/models/post/post_request.dart';
 import 'package:portfolio_app_flutter/models/post/post_response.dart';
 import 'package:portfolio_app_flutter/models/post/post_response_body.dart';
+import 'package:riverpod_annotation/riverpod_annotation.dart';
+
+part 'tumblr_api_provider.g.dart';
 
 const defaultLimit = 10;
 
-final tumblrProvider = FutureProvider.family<PostResponseBody, PostRequest>((
-  Ref ref,
-  PostRequest request,
-) async {
+@riverpod
+Future<PostResponseBody> tumblrApi(Ref ref, PostRequest request) async {
   Map<String, String> queryParams = {
     "offset": '${request.offset}',
     "limit": '${request.limit != null ? request.limit : defaultLimit}',
@@ -26,4 +27,4 @@ final tumblrProvider = FutureProvider.family<PostResponseBody, PostRequest>((
   print(result.toString());
 
   return result.response;
-});
+}

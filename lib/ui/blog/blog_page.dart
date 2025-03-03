@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:portfolio_app_flutter/models/post/post_request.dart';
-import 'package:portfolio_app_flutter/provider/tumblr_provider.dart';
+import 'package:portfolio_app_flutter/provider/tumblr_api_provider.dart';
 
 class BlogPage extends HookConsumerWidget {
   const BlogPage({super.key});
@@ -9,7 +9,7 @@ class BlogPage extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final response = ref.watch(
-      tumblrProvider(PostRequest(offset: 0, limit: 10, tag: 'blog')),
+      tumblrApiProvider(PostRequest(offset: 0, limit: 10, tag: 'blog')),
     );
 
     return Container(
