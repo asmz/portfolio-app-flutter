@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_app_flutter/models/post/post_request.dart';
 import 'package:portfolio_app_flutter/provider/tumblr_api_provider.dart';
 
-class BlogPage extends HookConsumerWidget {
+class BlogPage extends ConsumerWidget {
   const BlogPage({super.key});
 
   @override

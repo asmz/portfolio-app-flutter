@@ -1,4 +1,4 @@
-import 'package:hooks_riverpod/hooks_riverpod.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_app_flutter/api/api_client.dart';
 import 'package:portfolio_app_flutter/models/post/post_request.dart';
 import 'package:portfolio_app_flutter/models/post/post_response.dart';
