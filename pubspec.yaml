@@ -1,5 +1,5 @@
 name: portfolio_app_flutter
-description: "A new Flutter project."
+description: "Like a name card."
 publish_to: "none"
 version: 0.1.0
 
@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   freezed_annotation: ^3.0.0
+  json_annotation: ^4.9.0
   url_launcher: ^6.3.1
 
 dev_dependencies:
