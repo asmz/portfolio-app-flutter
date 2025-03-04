@@ -5,6 +5,7 @@ import 'package:portfolio_app_flutter/models/post/post_request.dart';
 import 'package:portfolio_app_flutter/provider/tumblr_api_provider.dart';
 import 'package:portfolio_app_flutter/types/post_tag.dart';
 import 'package:portfolio_app_flutter/ui/common/error/error_dialog.dart';
+import 'package:portfolio_app_flutter/ui/common/post/post_item.dart';
 
 class PostList extends ConsumerWidget {
   const PostList({super.key, required this.tag});
@@ -27,13 +28,11 @@ class PostList extends ConsumerWidget {
       child: response.when(
         data: (data) {
           return ListView.builder(
+            padding: EdgeInsets.symmetric(horizontal: 16),
             itemCount: data.posts.length,
             itemBuilder: (context, index) {
               final post = data.posts[index];
-              return ListTile(
-                title: Text(post.content[0].title ?? "empty"),
-                subtitle: Text(post.content[0].description ?? "empty"),
-              );
+              return PostItem(post: post);
             },
           );
         },

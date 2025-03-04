@@ -8,9 +8,20 @@ class BlogPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(title: Text('Blog')),
-      body: PostList(tag: PostTag.blog),
+      appBar: AppBar(
+        title: Text('Blog'),
+        backgroundColor: Colors.white,
+        elevation: 1,
+      ),
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/beer.jpg"),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: PostList(tag: PostTag.blog),
+      ),
     );
   }
 }
