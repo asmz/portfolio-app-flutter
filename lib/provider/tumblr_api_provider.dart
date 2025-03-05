@@ -13,7 +13,7 @@ const defaultLimit = 10;
 Future<PostResponseBody> tumblrApi(Ref ref, PostRequest request) async {
   Map<String, String> queryParams = {
     "offset": '${request.offset}',
-    "limit": '${request.limit != null ? request.limit : defaultLimit}',
+    "limit": '${request.limit ?? defaultLimit}',
     "npf": "true",
   };
   if (request.tag != null) {
