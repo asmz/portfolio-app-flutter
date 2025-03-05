@@ -24,7 +24,6 @@ Future<PostResponseBody> tumblrApi(Ref ref, PostRequest request) async {
     queryParams: queryParams,
     fromJson: (json) => PostResponse.fromJson(json),
   );
-  print(result.toString());
 
   return result.response;
 }

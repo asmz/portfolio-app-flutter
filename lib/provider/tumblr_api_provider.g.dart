@@ -6,7 +6,7 @@ part of 'tumblr_api_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tumblrApiHash() => r'4f39a0414fa910c8f83d8e99f83e6038181f068d';
+String _$tumblrApiHash() => r'ee37df2da9440b509c686cf065adbf54ec3a7925';
 
 /// Copied from Dart SDK
 class _SystemHash {
