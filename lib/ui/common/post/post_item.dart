@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:portfolio_app_flutter/constants/color.dart';
 import 'package:portfolio_app_flutter/models/post/post.dart';
 import 'package:portfolio_app_flutter/utils/date_util.dart';
