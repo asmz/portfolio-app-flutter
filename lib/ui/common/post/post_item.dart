@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:portfolio_app_flutter/constants/color.dart';
 import 'package:portfolio_app_flutter/models/post/post.dart';
+import 'package:portfolio_app_flutter/utils/date_util.dart';
 
 class PostItem extends StatelessWidget {
   const PostItem({super.key, required this.post});
@@ -89,12 +89,5 @@ class PostItem extends StatelessWidget {
         ),
       ),
     );
-  }
-
-  String convertTime(int second) {
-    int microsecond = second * 1000 * 1000;
-    DateTime date = DateTime.fromMicrosecondsSinceEpoch(microsecond);
-    String time = DateFormat("yyyy/MM/dd").format(date).toString();
-    return time; //例 2020年08月14日
   }
 }
