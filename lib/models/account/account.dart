@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'account.freezed.dart';
-part 'post/account.g.dart';
+part 'account.g.dart';
 
 @freezed
 abstract class Account with _$Account {

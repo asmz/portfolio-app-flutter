@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_app_flutter/models/account.dart';
+import 'package:portfolio_app_flutter/models/account/account.dart';
 import 'package:portfolio_app_flutter/ui/profile/widgets/account_item.dart';
 
 class AccountList extends StatelessWidget {
