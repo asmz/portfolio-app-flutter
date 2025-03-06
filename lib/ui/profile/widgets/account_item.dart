@@ -11,7 +11,7 @@ class AccountItem extends StatelessWidget {
   void onPressed() async {
     var url = Uri.parse(account.url);
     if (await canLaunchUrl(url)) {
-      await launchUrl(url);
+      await launchUrl(url, mode: LaunchMode.externalApplication);
     } else {
       throw 'Could not launch $url';
     }
