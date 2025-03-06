@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:portfolio_app_flutter/constants/color.dart';
+import 'package:portfolio_app_flutter/models/post/post.dart';
 import 'package:portfolio_app_flutter/provider/post_list_provider.dart';
 import 'package:portfolio_app_flutter/types/post_tag.dart';
 import 'package:portfolio_app_flutter/ui/common/error/error_dialog.dart';
 import 'package:portfolio_app_flutter/ui/common/post/post_item.dart';
 
 class PostList extends ConsumerWidget {
-  PostList({super.key, required this.tag});
+  PostList({super.key, required this.tag, this.onPressItem});
 
   final PostTag tag;
+  final void Function(Post)? onPressItem;
   final scrollController = ScrollController();
 
   void controlListener(PostListNotifier postListNotifier) {
@@ -58,7 +60,7 @@ class PostList extends ConsumerWidget {
           itemCount: posts.length + 1,
           itemBuilder: (context, index) {
             if (index < posts.length) {
-              return PostItem(post: posts[index]);
+              return PostItem(post: posts[index], onPressItem: onPressItem);
             }
 
             return Container(
