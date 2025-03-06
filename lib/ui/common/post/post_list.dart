@@ -48,6 +48,7 @@ class PostList extends ConsumerWidget {
     final posts = postListState.requireValue.posts;
     final isShowBottomIndicator =
         postListState.isLoading && !postListState.requireValue.isRefreshing;
+    final orientation = MediaQuery.of(context).orientation;
 
     return RefreshIndicator(
       color: AppColor.accent,
@@ -56,7 +57,9 @@ class PostList extends ConsumerWidget {
         controller: scrollController,
         child: ListView.builder(
           controller: scrollController,
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(
+            horizontal: orientation == Orientation.landscape ? 250 : 16,
+          ),
           itemCount: posts.length + 1,
           itemBuilder: (context, index) {
             if (index < posts.length) {
