@@ -1,6 +1,3 @@
-🚧Under construction🚧
-===
-
 # portfolio_app_flutter
 
 This app is like a name card, powered by Flutter.
@@ -9,7 +6,7 @@ This app is like a name card, powered by Flutter.
 
 - iOS
 - Android
-- Web
+- Web (https://asmz.github.io/portfolio-app-flutter/)
 
 ## Requirements
 
