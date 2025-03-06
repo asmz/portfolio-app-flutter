@@ -33,7 +33,7 @@ jobs:
       - name: Build
         run: |
           dart run build_runner build --delete-conflicting-outputs
-          flutter build web
+          flutter build web --base-href /portfolio-app-flutter/
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
