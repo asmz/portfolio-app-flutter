@@ -10,5 +10,6 @@ abstract class PostListState with _$PostListState {
     @Default([]) List<Post> posts,
     @Default(0) int offset,
     @Default(true) bool hasNext,
+    @Default(false) bool isRefreshing,
   }) = _PostListState;
 }

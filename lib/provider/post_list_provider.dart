@@ -15,7 +15,7 @@ class PostListNotifier extends StateNotifier<AsyncValue<PostListState>> {
 
   final PostTag tag;
 
-  void getPosts() async {
+  Future<void> getPosts() async {
     final previous = state;
     if (!previous.requireValue.hasNext || previous.isLoading) return;
 
@@ -40,10 +40,18 @@ class PostListNotifier extends StateNotifier<AsyncValue<PostListState>> {
         posts: newPosts,
         offset: newOffset,
         hasNext: result.response.totalPosts > newPosts.length,
+        isRefreshing: false,
       );
     });
 
     state = next.copyWithPrevious(previous);
+  }
+
+  Future<void> refresh() async {
+    state = AsyncData(
+      PostListState(posts: [], offset: 0, hasNext: true, isRefreshing: true),
+    );
+    await getPosts();
   }
 }
 

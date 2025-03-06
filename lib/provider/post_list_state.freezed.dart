@@ -15,7 +15,7 @@ T _$identity<T>(T value) => value;
 /// @nodoc
 mixin _$PostListState implements DiagnosticableTreeMixin {
 
- List<Post> get posts; int get offset; bool get hasNext;
+ List<Post> get posts; int get offset; bool get hasNext; bool get isRefreshing;
 /// Create a copy of PostListState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -27,21 +27,21 @@ $PostListStateCopyWith<PostListState> get copyWith => _$PostListStateCopyWithImp
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'PostListState'))
-    ..add(DiagnosticsProperty('posts', posts))..add(DiagnosticsProperty('offset', offset))..add(DiagnosticsProperty('hasNext', hasNext));
+    ..add(DiagnosticsProperty('posts', posts))..add(DiagnosticsProperty('offset', offset))..add(DiagnosticsProperty('hasNext', hasNext))..add(DiagnosticsProperty('isRefreshing', isRefreshing));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is PostListState&&const DeepCollectionEquality().equals(other.posts, posts)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.hasNext, hasNext) || other.hasNext == hasNext));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PostListState&&const DeepCollectionEquality().equals(other.posts, posts)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.hasNext, hasNext) || other.hasNext == hasNext)&&(identical(other.isRefreshing, isRefreshing) || other.isRefreshing == isRefreshing));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(posts),offset,hasNext);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(posts),offset,hasNext,isRefreshing);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PostListState(posts: $posts, offset: $offset, hasNext: $hasNext)';
+  return 'PostListState(posts: $posts, offset: $offset, hasNext: $hasNext, isRefreshing: $isRefreshing)';
 }
 
 
@@ -52,7 +52,7 @@ abstract mixin class $PostListStateCopyWith<$Res>  {
   factory $PostListStateCopyWith(PostListState value, $Res Function(PostListState) _then) = _$PostListStateCopyWithImpl;
 @useResult
 $Res call({
- List<Post> posts, int offset, bool hasNext
+ List<Post> posts, int offset, bool hasNext, bool isRefreshing
 });
 
 
@@ -69,11 +69,12 @@ class _$PostListStateCopyWithImpl<$Res>
 
 /// Create a copy of PostListState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? posts = null,Object? offset = null,Object? hasNext = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? posts = null,Object? offset = null,Object? hasNext = null,Object? isRefreshing = null,}) {
   return _then(_self.copyWith(
 posts: null == posts ? _self.posts : posts // ignore: cast_nullable_to_non_nullable
 as List<Post>,offset: null == offset ? _self.offset : offset // ignore: cast_nullable_to_non_nullable
 as int,hasNext: null == hasNext ? _self.hasNext : hasNext // ignore: cast_nullable_to_non_nullable
+as bool,isRefreshing: null == isRefreshing ? _self.isRefreshing : isRefreshing // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }
@@ -85,7 +86,7 @@ as bool,
 
 
 class _PostListState with DiagnosticableTreeMixin implements PostListState {
-  const _PostListState({final  List<Post> posts = const [], this.offset = 0, this.hasNext = true}): _posts = posts;
+  const _PostListState({final  List<Post> posts = const [], this.offset = 0, this.hasNext = true, this.isRefreshing = false}): _posts = posts;
   
 
  final  List<Post> _posts;
@@ -97,6 +98,7 @@ class _PostListState with DiagnosticableTreeMixin implements PostListState {
 
 @override@JsonKey() final  int offset;
 @override@JsonKey() final  bool hasNext;
+@override@JsonKey() final  bool isRefreshing;
 
 /// Create a copy of PostListState
 /// with the given fields replaced by the non-null parameter values.
@@ -109,21 +111,21 @@ _$PostListStateCopyWith<_PostListState> get copyWith => __$PostListStateCopyWith
 void debugFillProperties(DiagnosticPropertiesBuilder properties) {
   properties
     ..add(DiagnosticsProperty('type', 'PostListState'))
-    ..add(DiagnosticsProperty('posts', posts))..add(DiagnosticsProperty('offset', offset))..add(DiagnosticsProperty('hasNext', hasNext));
+    ..add(DiagnosticsProperty('posts', posts))..add(DiagnosticsProperty('offset', offset))..add(DiagnosticsProperty('hasNext', hasNext))..add(DiagnosticsProperty('isRefreshing', isRefreshing));
 }
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PostListState&&const DeepCollectionEquality().equals(other._posts, _posts)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.hasNext, hasNext) || other.hasNext == hasNext));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PostListState&&const DeepCollectionEquality().equals(other._posts, _posts)&&(identical(other.offset, offset) || other.offset == offset)&&(identical(other.hasNext, hasNext) || other.hasNext == hasNext)&&(identical(other.isRefreshing, isRefreshing) || other.isRefreshing == isRefreshing));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_posts),offset,hasNext);
+int get hashCode => Object.hash(runtimeType,const DeepCollectionEquality().hash(_posts),offset,hasNext,isRefreshing);
 
 @override
 String toString({ DiagnosticLevel minLevel = DiagnosticLevel.info }) {
-  return 'PostListState(posts: $posts, offset: $offset, hasNext: $hasNext)';
+  return 'PostListState(posts: $posts, offset: $offset, hasNext: $hasNext, isRefreshing: $isRefreshing)';
 }
 
 
@@ -134,7 +136,7 @@ abstract mixin class _$PostListStateCopyWith<$Res> implements $PostListStateCopy
   factory _$PostListStateCopyWith(_PostListState value, $Res Function(_PostListState) _then) = __$PostListStateCopyWithImpl;
 @override @useResult
 $Res call({
- List<Post> posts, int offset, bool hasNext
+ List<Post> posts, int offset, bool hasNext, bool isRefreshing
 });
 
 
@@ -151,11 +153,12 @@ class __$PostListStateCopyWithImpl<$Res>
 
 /// Create a copy of PostListState
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? posts = null,Object? offset = null,Object? hasNext = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? posts = null,Object? offset = null,Object? hasNext = null,Object? isRefreshing = null,}) {
   return _then(_PostListState(
 posts: null == posts ? _self._posts : posts // ignore: cast_nullable_to_non_nullable
 as List<Post>,offset: null == offset ? _self.offset : offset // ignore: cast_nullable_to_non_nullable
 as int,hasNext: null == hasNext ? _self.hasNext : hasNext // ignore: cast_nullable_to_non_nullable
+as bool,isRefreshing: null == isRefreshing ? _self.isRefreshing : isRefreshing // ignore: cast_nullable_to_non_nullable
 as bool,
   ));
 }

@@ -21,6 +21,10 @@ class PostList extends ConsumerWidget {
     }
   }
 
+  Future<void> onRefresh(PostListNotifier postListNotifier) async {
+    await postListNotifier.refresh();
+  }
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final postListState = ref.watch(postListProvider(tag));
@@ -28,38 +32,52 @@ class PostList extends ConsumerWidget {
 
     scrollController.addListener(() => controlListener(postListNotifier));
 
-    if (postListState.hasValue && postListState.requireValue.posts.isNotEmpty) {
-      final posts = postListState.requireValue.posts;
-      return ListView.builder(
-        controller: scrollController,
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        itemCount: posts.length + 1,
-        itemBuilder: (context, index) {
-          if (index < posts.length) {
-            return PostItem(post: posts[index]);
-          }
-
-          if (postListState.isLoading) {
-            return SizedBox(
-              height: 48,
-              child: Center(
-                child: CircularProgressIndicator(color: AppColor.accent),
-              ),
-            );
-          }
-
-          return SizedBox(height: 48);
-        },
-      );
-    } else if (postListState.hasError) {
+    if (postListState.hasError) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         ErrorDialog.show(context, message: postListState.error.toString());
       });
       return SizedBox();
-    } else if (postListState.isLoading) {
-      return Center(child: CircularProgressIndicator(color: AppColor.accent));
-    } else {
+    }
+
+    if (!postListState.hasValue) {
       return SizedBox();
     }
+
+    final posts = postListState.requireValue.posts;
+    final isShowBottomIndicator =
+        postListState.isLoading && !postListState.requireValue.isRefreshing;
+
+    return RefreshIndicator(
+      color: AppColor.accent,
+      onRefresh: () async => await onRefresh(postListNotifier),
+      child: Scrollbar(
+        controller: scrollController,
+        child: ListView.builder(
+          controller: scrollController,
+          padding: EdgeInsets.symmetric(horizontal: 16),
+          itemCount: posts.length + 1,
+          itemBuilder: (context, index) {
+            if (index < posts.length) {
+              return PostItem(post: posts[index]);
+            }
+
+            return Container(
+              padding: EdgeInsets.symmetric(vertical: 16),
+              child: SizedBox(
+                height: 48,
+                child:
+                    isShowBottomIndicator
+                        ? Center(
+                          child: CircularProgressIndicator(
+                            color: AppColor.accent,
+                          ),
+                        )
+                        : null,
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }
