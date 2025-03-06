@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:portfolio_app_flutter/constants/color.dart';
-import 'package:portfolio_app_flutter/models/account.dart';
+import 'package:portfolio_app_flutter/models/account/account.dart';
 
 class AccountItem extends StatelessWidget {
   const AccountItem({super.key, required this.account});
