@@ -32,7 +32,7 @@ jobs:
 
       - name: Build
         run: |
-          flutter run build_runner build
+          dart run build_runner build
           flutter build web
 
       - name: Deploy
