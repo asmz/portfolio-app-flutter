@@ -2,11 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_app_flutter/constants/color.dart';
 import 'package:portfolio_app_flutter/models/post/post.dart';
 import 'package:portfolio_app_flutter/utils/date_util.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PostItem extends StatelessWidget {
-  const PostItem({super.key, required this.post});
+  const PostItem({super.key, required this.post, this.onPressItem});
 
   final Post post;
+  final void Function(Post)? onPressItem;
+
+  void onPressed(Post post) async {
+    if (onPressItem != null) {
+      onPressItem!(post);
+      return;
+    }
+
+    final urlString = post.content.first.url ?? "";
+    final url = Uri.parse(urlString);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +41,9 @@ class PostItem extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
         ),
-        onPressed: () {},
+        onPressed: () {
+          onPressed(post);
+        },
         child: Column(
           spacing: 8,
           crossAxisAlignment: CrossAxisAlignment.start,
