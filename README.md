@@ -15,4 +15,4 @@ This app is like a name card, powered by Flutter.
 
 ## Attention
 
-This app uses the Thumblr API. The API has rate limits, and if exceeded, it will be unavailable for a certain period of time, so please avoid making a large number of requests in a short period of time.
+This app uses the Tumblr API. The API has rate limits, and if exceeded, it will be unavailable for a certain period of time, so please avoid making a large number of requests in a short period of time.
