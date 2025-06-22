@@ -1,0 +1,43 @@
+appId: ${APP_ID}
+---
+- launchApp
+- assertVisible: "純東北産麦芽系エンジニア"
+- takeScreenshot: e2e/screenshots/${TIMESTAMP}/01_launch
+- scrollUntilVisible:
+    element:
+      id: "hatenablog"
+    direction: DOWN
+    timeout: 5000
+    speed: 50
+- tapOn: ".*Blog.*"
+- waitForAnimationToEnd
+- scrollUntilVisible:
+    element:
+      id: "post-blog-10"
+    direction: DOWN
+    timeout: 30000
+    speed: 80
+- takeScreenshot: e2e/screenshots/${TIMESTAMP}/02_blog
+- tapOn:
+    id: "post-blog-10"
+- waitForAnimationToEnd:
+    timeout: 5000
+- tapOn:
+    point: "7%,9%"
+- tapOn: ".*Slide.*"
+- waitForAnimationToEnd
+- scrollUntilVisible:
+    element:
+      id: "post-slide-6"
+    direction: DOWN
+    timeout: 30000
+    speed: 80
+- takeScreenshot: e2e/screenshots/${TIMESTAMP}/03_slide
+- tapOn:
+    id: "post-slide-6"
+- waitForAnimationToEnd:
+    timeout: 5000
+- tapOn:
+    point: "7%,9%"
+- tapOn: ".*Profile.*"
+- takeScreenshot: e2e/screenshots/${TIMESTAMP}/04_profile
