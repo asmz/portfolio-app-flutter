@@ -63,7 +63,10 @@ class PostList extends ConsumerWidget {
           itemCount: posts.length + 1,
           itemBuilder: (context, index) {
             if (index < posts.length) {
-              return PostItem(post: posts[index], onPressItem: onPressItem);
+              return Semantics(
+                identifier: 'post-${tag.name}-$index',
+                child: PostItem(post: posts[index], onPressItem: onPressItem),
+              );
             }
 
             return Container(

@@ -26,23 +26,26 @@ class AccountItem extends StatelessWidget {
         padding: EdgeInsets.zero,
       ),
       onPressed: onPressed,
-      child: Padding(
-        padding: EdgeInsets.all(16),
-        child: Row(
-          spacing: 16,
-          children: [
-            Image.asset("assets/${account.service}.png", width: 24),
-            Text(
-              account.name,
-              style: TextStyle(fontSize: 16, color: AppColor.text),
-            ),
-            Expanded(
-              child: Container(
-                alignment: Alignment.centerRight,
-                child: Icon(Icons.open_in_new, color: AppColor.subText),
+      child: Semantics(
+        identifier: account.service,
+        child: Padding(
+          padding: EdgeInsets.all(16),
+          child: Row(
+            spacing: 16,
+            children: [
+              Image.asset("assets/${account.service}.png", width: 24),
+              Text(
+                account.name,
+                style: TextStyle(fontSize: 16, color: AppColor.text),
               ),
-            ),
-          ],
+              Expanded(
+                child: Container(
+                  alignment: Alignment.centerRight,
+                  child: Icon(Icons.open_in_new, color: AppColor.subText),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
