@@ -47,3 +47,6 @@ app.*.map.json
 # Maestro
 e2e/logs/
 e2e/screenshots/
+
+# Integration tests
+integration_test/screenshots/
