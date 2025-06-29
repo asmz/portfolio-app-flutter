@@ -56,6 +56,7 @@ class PostList extends ConsumerWidget {
       child: Scrollbar(
         controller: scrollController,
         child: ListView.builder(
+          key: Key("post-list-view"),
           controller: scrollController,
           padding: EdgeInsets.symmetric(
             horizontal: orientation == Orientation.landscape ? 250 : 16,
