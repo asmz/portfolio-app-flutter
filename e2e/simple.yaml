@@ -1,0 +1,16 @@
+appId: ${APP_ID}
+---
+- launchApp
+- tapOn: ".*Blog.*"
+- waitForAnimationToEnd
+- scrollUntilVisible:
+    element:
+      text: "Kotlin.*"
+    direction: DOWN
+    timeout: 30000
+    speed: 80
+- tapOn:
+    text: "Kotlin.*"
+- waitForAnimationToEnd
+- tapOn:
+    point: "7%,9%"
