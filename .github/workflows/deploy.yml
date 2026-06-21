@@ -19,6 +19,9 @@ jobs:
         with:
           ref: main
 
+      - name: Setup mise
+        uses: jdx/mise-action@v4
+
       - name: Flutter
         uses: subosito/flutter-action@v2
         with:
@@ -29,6 +32,13 @@ jobs:
       - name: Install dependencies
         run: |
           flutter pub get
+
+      - name: Setup env
+        env:
+          ENVKEY: ${{ secrets.ENVKEY }}
+        run: |
+          echo $ENVKEY > .env.keys
+          mise run env:decrypt
 
       - name: Build
         run: |
