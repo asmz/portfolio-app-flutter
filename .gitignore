@@ -50,3 +50,5 @@ e2e/screenshots/
 
 # Integration tests
 integration_test/screenshots/
+
+.env*
