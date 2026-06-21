@@ -24,9 +24,8 @@ jobs:
 
       - name: Setup env
         env:
-          ENVKEY: ${{ secrets.ENVKEY }}
+          DOTENV_PRIVATE_KEY_ENC: ${{ secrets.DOTENV_PRIVATE_KEY_ENC }}
         run: |
-          echo $ENVKEY > .env.keys
           mise run env:decrypt
 
       - name: Install dependencies
