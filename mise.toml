@@ -1,2 +1,9 @@
 [tools]
 flutter = '3.41.4'
+"npm:@dotenvx/dotenvx" = "latest"
+
+[tasks."env:get"]
+run = "dotenvx get --env-file=.env.enc --format=eval"
+
+[tasks."env:decrypt"]
+run = "dotenvx get --env-file=.env.enc --format=eval > .env"

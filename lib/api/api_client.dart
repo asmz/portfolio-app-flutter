@@ -1,7 +1,6 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
-import 'package:portfolio_app_flutter/constants/environment.dart';
 
 class ApiClient {
   static Future<T> get<T>({
@@ -9,7 +8,7 @@ class ApiClient {
     required T Function(dynamic) fromJson,
   }) async {
     final uri = Uri.parse(
-      Environment.tumblrApiEndPoint,
+      dotenv.get('TUMBLR_API_END_POINT'),
     ).replace(queryParameters: queryParams);
     final response = await http.get(uri);
 
