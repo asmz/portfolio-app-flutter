@@ -1,6 +1,8 @@
 [tools]
-flutter = '3.41.4'
+flutter = '3.44.6'
 "npm:@dotenvx/dotenvx" = "latest"
+"gem:cocoapods" = "1.16.2"
+maestro = "cli-2.11.0"
 
 [tasks."env:get"]
 run = "dotenvx get --env-file=.env.enc --format=eval"

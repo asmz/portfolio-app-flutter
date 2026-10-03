@@ -10,8 +10,8 @@ This app is like a name card, powered by Flutter.
 
 ## Requirements
 
-- Flutter 3.29.0 or later
-- Dart 3.7.0 or later
+- Flutter 3.44.6 or later
+- Dart 3.12.2 or later
 
 ## Attention
 
